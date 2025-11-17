@@ -53,6 +53,9 @@ class AddonsHandler:
         """
         addons_path = []
         for addon in self._get_addons():
+            if addon.type != "remote":
+                addons_path.append(addon.container_posix_path)
+                continue
             path = addon.path or self.get_context_path(addon)
             repo = Repo(path.as_posix())
             if not repo.submodules:
