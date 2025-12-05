@@ -95,6 +95,7 @@ class AddonsHandler:
                     path=path,
                     url=addons.origin.url,
                     branch=addons.branch or str(self.odoo_version),
+                    shallow=addons.shallow,
                 )
 
     def pull(self, depth: int = 1) -> None:
@@ -121,6 +122,7 @@ class AddonsHandler:
                         url=addons.origin.url,
                         branch=addons.branch or str(self.odoo_version),
                         depth=depth,
+                        shallow=addons.shallow,
                     )
 
     @property
