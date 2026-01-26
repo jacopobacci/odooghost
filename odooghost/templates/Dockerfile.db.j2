@@ -1,6 +1,6 @@
 FROM postgres:{{ postgres_version }}
 
-USER root # Install build dependencies and pgvector RUN apt-get update &&
+USER root # Install build dependencies and pgvector RUN apt-get update && \
 apt-get install -y --no-install-recommends \ ca-certificates \ wget \
 build-essential \ postgresql-server-dev-all \ && rm -rf /var/lib/apt/lists/* #
 Download, build and install pgvector (compatible with PostgreSQL 18) RUN wget
