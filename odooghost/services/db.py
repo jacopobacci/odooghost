@@ -108,12 +108,13 @@ class DbService(BaseService):
 
     def _get_container_options(self, one_off: bool = False) -> t.Dict[str, t.Any]:
         options = super()._get_container_options(one_off)
+        target = "/var/lib/postgresql" if self.config.version >= 18 else "/var/lib/postgresql/data"
         options.update(
             dict(
                 mounts=[
                     Mount(
                         source=self.volume_name,
-                        target="/var/lib/postgresql/data",
+                        target=target,
                         type="volume",
                     )
                 ],
