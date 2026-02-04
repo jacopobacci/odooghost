@@ -1,5 +1,6 @@
 FROM postgres:{{ postgres_version }}
 
+{% if postgres_version == '18' %}
 USER root
 # Install build dependencies and pgvector
 RUN apt-get update && \
@@ -22,3 +23,4 @@ RUN wget https://github.com/pgvector/pgvector/archive/refs/tags/v0.8.1.tar.gz -O
     rm -rf /var/lib/apt/lists/*
 
 USER postgres
+{% endif %}
